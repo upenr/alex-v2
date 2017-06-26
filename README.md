@@ -1,6 +1,5 @@
-<<<<<<< HEAD
-# alex-copy
-Copy of all current files
+#Upen: Progress bar and back button fixes here. 
+
 These are files in the PhoneGap project directory.
 To install PhoneGap, visit: phonegap.com.
 =======
@@ -30,7 +29,3 @@ To install PhoneGap, visit: phonegap.com.
 In your browser, open the file:
 
     /www/index.html
-
-
-  
->>>>>>> Initial Commit of Alex-Copy
