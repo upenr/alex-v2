@@ -1,0 +1,101 @@
+
+<!-- We don't need full layout here, because this page will be parsed with Ajax-->
+<!-- Top Navbar-->
+<div class="navbar">
+  <div class="navbar-inner">
+    <!-- <div class="left"><a href="index.html" style="display:inline-block;width:50px;" class="back link"> <i style="font-size:25px" class="f7-icons size-10">home_fill</i> </a></div> -->
+	<div class="left sliding"><a href="#" class="back link"> <i class="icon icon-back"></i><span>Back</span></a></div>
+    <div class="center sliding">My Agenda</div>
+    <!-- <div class="right">
+       <a href="index.html" class="item-link"> <i style="font-size:20px" class="f7-icons size-10">home_fill</i> </a>
+       <a href="theagenda.html" class="item-link"> <i style="font-size:20px" class="f7-icons size-10">time_fill</i> </a>
+    </div> -->
+  </div>
+</div>
+
+
+<script type="text/javascript" src="https://ibmtechu.com/js/my-test.js"></script>;
+
+<div class="pages">
+  <!-- Page, data-page contains page name-->
+
+<div data-page="APPagenda" class="page">
+
+<div id="MyAgendaMsg" style="z-index:10000;width:100%;background:transparent;top:0px;height:100%;color:grey;position:fixed;">
+ <div style="position:relative;margin:8px;background:#e6e6e6;top:100px;box-shadow: 2px 3px 3px 2px rgba(0,0,0,.4);">
+  <a href="#" class="closemsgMyAgenda" style="position:absolute;top:7px;right:7px">
+        <i style="font-size:25px;color:silver" class="f7-icons size-10">close_round_fill</i>
+  </a>
+ <br>
+ <table cellspacing="10">
+ <tr>
+ <td valign="top">
+ <i style=\"color:red;font-size:32px;\" class=\"f7-icons\">info_fill</i>
+ </td>
+ <td valign="top">
+ <font style="color:black">Surveys and Session Status</font>
+ <br><br>
+ <font style="color:grey">*Tap a session to complete a survey (evaluation) or to check the schedule status.</font>
+ <br><br>
+ <font style="color:grey">Tap an empty slot to view sessions running in that timeslot.</font>
+ <br><br>
+ <font style="color:grey">Please complete surveys for all the sessions you attend!</font>
+ <br><br>
+ <font style="color:grey">*Internet access required!</font>
+ </td>
+ </tr>
+ </table>  <br>
+ </div>
+</div>
+
+<div class="balldiv">
+ <a href="Stheagenda.html"> 
+ <div class="balloon">
+        <i style="font-size:32px;color:white" class="f7-icons size-10">time_fill</i>
+ </div>
+</a>
+</div>
+
+<div class="homediv">
+ <a href="#" class="back link">
+ <div class="homeballoon">
+        <i style="font-size:28px;color:white" class="f7-icons size-10">home_fill</i>
+ </div>
+</a>
+</div>
+
+
+  <!-- Search Bar -->
+  <form data-search-list=".list-block-search" data-search-in=".item-title" class="searchbar searchbar-init">
+    <div class="searchbar-input">
+      <input type="search" placeholder="Search"><a href="#" class="searchbar-clear"></a>
+    </div><a href="#" class="searchbar-cancel">Cancel</a>
+  </form>
+
+  <div class="page-content">
+
+    <!-- This block will be displayed if nothing found -->
+    <div style="" class="content-block searchbar-not-found">
+      <div class="content-block-inner">Nothing found</div>
+    </div>
+    <br>
+    <center><div class="buttons-row" style="max-width:98%">
+      <a href="#" id="oneday" class="button active MON">Mon</a>
+      <a href="#" id="twoday" class="button active TUE">Tue</a>
+      <a href="#" id="threeday" class="button active WED">Wed</a>
+      <a href="#" id="fourday" class="button active THU">Thu</a>
+      <a href="#" id="fiveday" class="button active FRI">Fri</a>
+    </div></center>
+
+              <div id="Monday" style="position:relative;top:-15px" class="list-block list-block-search searchbar-found"> </div>
+              <div id="Tuesday" style="position:relative;top:-15px" class="list-block list-block-search searchbar-found"> </div>
+              <div id="Wednesday" style="position:relative;top:-15px" class="list-block list-block-search searchbar-found"> </div>
+              <div id="Thursday" style="position:relative;top:-15px" class="list-block list-block-search searchbar-found"> </div>
+              <div id="Friday" style="position:relative;top:-15px" class="list-block list-block-search searchbar-found"> </div>
+
+  </div>
+</div>
+
+
+</div>
+
