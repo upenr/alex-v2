@@ -1,0 +1,78 @@
+
+<!-- We don't need full layout here, because this page will be parsed with Ajax-->
+<!-- Top Navbar-->
+<div class="navbar">
+  <div class="navbar-inner">
+    <div class="left sliding"><a href="#" class="back link"> <i class="icon icon-back"></i><span>Back</span></a></div>
+    <div class="center sliding"> <font style="width:200px;" id="allsessionstitle">All Sessions</font> </div>
+    <!-- <div class="right">
+      <a href="APPagenda.html" class="item-link"> <i style="font-size:20px" class="f7-icons size-10">favorites_fill</i> </a>
+    </diva -->
+  </div>
+</div>
+
+<div class="pages">
+  <!-- Page, data-page contains page name-->
+<div data-page="theagenda" class="page">
+
+<div id="AgendaMsg" style="z-index:10000;width:100%;background:transparent;top:100px;color:grey;position:fixed;">
+ <div style="position:relative;margin:8px;background:#e6e6e6;box-shadow: 2px 3px 3px 2px rgba(0,0,0,.4);">
+  <a href="#" class="closemsgAgenda" style="position:absolute;top:7px;right:7px">
+        <i style="font-size:25px;color:silver" class="f7-icons size-10">close_round_fill</i>
+  </a>
+ <br>
+ <table cellspacing="10">
+ <tr>
+ <td valign="top">
+ <i style=\"color:red;font-size:32px;\" class=\"f7-icons\">info_fill</i>
+ </td>
+ <td valign="top">
+ <font style="color:black">Note!</font>
+ <br> <br>
+ <font style="color:grey">Featured sessions is enabled by default. Use <b><u>Preferences</u></b> to show all sessions. We strongly recommend you filter agenda data by brand and/or day.</font>
+ <br> <br>
+  Tap a session to view detailed information, add the session to your agenda, complete a survey or check the schedule status.
+ </td>
+ </tr>
+ </table> <br>
+ </div>
+</div>
+<div class="prefdiv">
+ <a href="Asettings.html">
+ <div class="balloon" style="background:grey">
+        <i style="font-size:31px;color:white" class="f7-icons size-10">settings_fill</i>
+ </div>
+</a>
+</div>
+
+<div class="balldiv">
+ <a href="SAPPagenda.html">
+ <div class="balloon">
+        <i style="font-size:28px;color:white" class="f7-icons size-10">favorites_fill</i>
+ </div>
+</a>
+</div>
+<div class="homediv">
+ <a href="#" class="back link">
+ <div class="homeballoon">
+        <i style="font-size:28px;color:white" class="f7-icons size-10">home_fill</i>
+ </div>
+</a>
+</div>
+  <!-- Search Bar -->
+  <form id="sform" data-search-list=".list-block-search" data-search-in=".item-title" class="searchbar searchbar-init">
+    <div class="searchbar-input">
+      <input type="search" placeholder="Search" name="sts"><a href="#" class="searchbar-clear"></a>
+    </div><a href="#" class="searchbar-cancel">Cancel</a>
+  </form>
+  <div class="page-content">
+
+    <!-- This block will be displayed if nothing found -->
+    <div style="" class="content-block searchbar-not-found">
+      <div class="content-block-inner">Nothing found</div>
+    </div>
+              <div id="AllSessions" style="position:relative;top:-15px" class="list-block list-block-search searchbar-found"> </div>
+  </div>
+</div>
+</div>
+

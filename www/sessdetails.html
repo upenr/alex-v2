@@ -1,0 +1,67 @@
+
+<div class="navbar">
+  <div class="navbar-inner">
+    <div class="left"><a href="#" class="back link"> <i style="font-size:32px;" class="f7-icons size-10">arrow_left_fill</i> </a></div>
+    <div class="center sliding">Session Details</div>
+    <!-- <div class="right"><a href="#" class="link icon-only open-panel"> <i class="icon icon-bars"></i></a></div> -->
+  </div>
+</div>
+<div class="pages">
+  <div data-page="sessdet" class="page">
+    <div class="page-content">
+
+     <div class="content-block-title">
+      <p class="buttons-row">
+      <a href="#" style="width:65%" class="button active addtoagenda back">
+        <i style="font-size:16px" class="f7-icons size-10">add_round_fill</i>
+        Add to Agenda
+      </a> &nbsp;
+      <a href="eval2.html?survey={{url_query.session}}&title={{url_query.title}}" style="width:35%" class="button active">
+        <i style="font-size:16px" class="f7-icons size-10">check_round_fill</i>
+        Survey
+      </a>
+     </p>
+     </div>
+
+      <div class="list-block">
+      <ul>
+        <li class="item-content">
+          <div class="item-inner">
+           <font>
+            <font style="font-size:13px;text-align:left;display:inline-block;max-width:98%;word-wrap:normal;">{{url_query.session}}</font> 
+            <font style="font-size:13px;color:blue;text-align:left;display:inline-block;max-width:98%;word-wrap:normal;">{{url_query.speaker}}</font> 
+            <br><font style="font-size:13px;text-align:left;display:inline-block;max-width:98%;word-wrap:normal;"><b>{{url_query.title}}</b></font> 
+            <br>
+	    <font style="font-size:13px;color:maroon">{{url_query.track}}</font>
+            <br>
+            <font style="font-size:13px;color:grey">{{url_query.type}} {{url_query.level}}</font>
+          </font>
+          </div>
+        </li>
+        <li class="item-content">
+          <div class="item-inner">
+            <font style="font-size:13px;color:grey">Repeats: <font style="color:maroon">{{url_query.reps}} </font> </font>
+          </div>
+        </li>
+        <li class="item-content" style="text-align:left;">
+          <div class="item-inner" style="text-align:left;">
+            <br><font style="text-align:left;font-size:13px;display:inline-block;max-width:98%;word-wrap:normal;color:black">{{url_query.abstract}}</font><br>
+          </div>
+        </li>
+      </ul>
+
+      <form id="addsess" class="list-block store-data">      
+	<input type="hidden" name="session" value="{{url_query.session}}">
+	<input type="hidden" name="title" value="{{url_query.title}}">
+	<input type="hidden" name="speaker" value="{{url_query.speaker}}">
+	<input type="hidden" name="dtr" value="{{url_query.dtr}}">
+	<input type="hidden" name="timeslot" value="{{url_query.timeslot}}">
+  
+      </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

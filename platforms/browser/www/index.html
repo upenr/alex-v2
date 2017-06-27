@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="snow">
+    <title>My App</title>
+    <!-- Path to Framework7 Library CSS-->
+    <link rel="stylesheet" href="css/framework7.ios.min.css">
+    <link rel="stylesheet" href="css/framework7.ios.colors.min.css">
+    <link rel="stylesheet" href="css/framework7-icons.css">  
+    <!-- Path to your custom app styles-->
+    <link rel="stylesheet" href="css/my-app.css">
+    <!-- <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script> -->
+  </head>
+
+  <body onload="onLoad()">
+    <!-- Status bar overlay for fullscreen mode-->
+    <div class="statusbar-overlay"></div>
+    <!-- Panels overlay-->
+    <div class="panel-overlay"></div>
+    <!-- Left panel with reveal effect-->
+    <div class="panel panel-left panel-reveal">
+      <div class="content-block" style="color:snow">
+        <font>IBM TechU Pocket Guide<br> <font id="datasync"></font></font>
+	<hr style="width:100%">
+	<font id="delegate"></font>
+	<hr style="width:100%">
+	<a href="notes.html" style="display:block;color:snow" class="close-panel">
+		<i style="font-size:20px" class="f7-icons size-10">compose</i>&nbsp;&nbsp;Notes
+	</a>
+	<hr style="width:100%">
+	<a href="attendee.html" style="display:block;color:snow" class="close-panel">
+                <i style="font-size:20px" class="f7-icons size-10">persons</i>&nbsp;&nbsp;Attendee Search
+        </a>
+        <hr style="width:100%">
+      </div>
+    </div>
+    <!-- Right panel with cover effect-->
+    <div class="panel panel-right panel-cover">
+      <div class="content-block">
+        <p>Right panel content goes here</p>
+      </div>
+    </div>
+    <!-- Views-->
+    <div class="views">
+      <!-- Your main view, should have "view-main" class-->
+      <div class="view view-main">
+        <!-- Top Navbar-->
+        <div class="navbar">
+          <div class="navbar-inner">
+            <!-- We have home navbar without left link-->
+            <div class="left">
+              <a href="#" class="link icon-only open-panel"> <i class="icon icon-bars"></i></a> 
+            </div>
+            <!-- <div class="center sliding"> <img style="border:0px;border-style:solid;width:65px" src="img/IBM.svg"></div> -->
+            <div class="center" style="color:#007aff"> <font id="header" style="width:200px"></font>  </div> 
+            <div class="right">
+              <a href="about.html" data-panel="right" class="link icon-only"> 
+				<i style="font-size:25px" class="f7-icons size-10">info_fill</i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- Pages, because we need fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages navbar-through toolbar-through">
+          <!-- Page, data-page contains page name-->
+          <div data-page="index" class="page">
+            <!-- Scrollable page content-->
+            <div class="page-content">
+              <div class="content-block-title" style="color:black;" >IBMTechU Pocket Agenda Guide</div>
+              <div class="content-block">
+                <div class="content-block-inner" style="background:url('img/power.png') no-repeat 95% 70%;background-size:60px 60px;background-color:white">
+                  <p class="content-block" id="event">Please read the information in the <i style='color:#007aff;font-size:16px;' class='f7-icons'>info_fill</i><br>section above.  </p>
+                </div>
+              </div>
+              <div class="list-block">
+                <ul>
+		  <li><a id="loginsync" href="login.html" class="item-link">
+                      <div class="item-content">
+                        <div class="item-inner"> 
+                          <div class="item-title" id="meme"><i style="font-size:20px" class="f7-icons size-10">login</i> Login & Sync IBMtechU data</div>
+                        </div>
+                      </div></a></li>
+                  <li><a style="display:none" id="prefs" href="settings.html" class="item-link">
+                      <div class="item-content"> 
+                        <div class="item-inner">
+                          <!-- <div class="item-title"><i style="font-size:19px;border:1px;border-style:solid;padding:2px;border-color:grey;background:grey;color:white;border-radius:6px" class="f7-icons size-10">settings_fill</i> Preferences</div> -->
+                          <div class="item-title"><i style="font-size:20px;color:grey" class="f7-icons size-10">settings_fill</i> Preferences</div>
+                        </div>
+                      </div></a></li>
+                 <li><a style="display:none" id="theagenda" href="theagenda.html" class="item-link">
+                      <div class="item-content">
+                        <div class="item-inner">
+                          <div class="item-title"> <i style="font-size:20px;color:#007aff" class="f7-icons size-10">time_fill</i> Agenda Sessions</div>
+                        </div>
+                      </div></a></li>
+	         <li style="display:none" id="myagenda"><a href="APPagenda.html" class="item-link">
+                      <div class="item-content">
+                        <div class="item-inner">
+                          <div class="item-title"> <i style="font-size:20px;color:#007aff" class="f7-icons size-10">favorites_fill</i> My Agenda</div>
+                        </div>
+                      </div></a></li>
+		 <li style="display:none" id="nots"><a href="nots.html" class="item-link">
+                      <div class="item-content">
+                        <div class="item-inner">
+			  <div class="item-title"> <i style="font-size:20px;color:silver" class="f7-icons size-10">chat_fill</i> Notifications <font style="display:inline-block;border:0px;border-style:solid;padding:2px;min-width:22px;text-align:center;border-radius:6px;background::white" id="notsid"></font> </div>
+                        </div>
+                      </div></a></li>
+	         <li style="display:none" id="indoverall"><a href="overall.html" class="item-link">
+                      <div class="item-content">
+                        <div class="item-inner">
+                          <div class="item-title"> <i style="font-size:20px;color:#007aff" class="f7-icons size-10">check_round_fill</i> Overall Event Survey &nbsp;&nbsp;<font id="overyeah"></font> </div>
+                        </div>
+                      </div></a></li>
+                </ul>
+              </div>
+
+		<!-- <div class="sponFOOT">SPONSOR</div> -->
+            </div>
+          </div>
+        </div>
+		 <!-- Path to Framework7 Library JS-->
+    <script type="text/javascript" src="js/framework7.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="cordova.js"></script> <!-- upen - cordova.js is auto-available before publish -->
+    <!-- Path to your app js-->
+    <!-- <script type="text/javascript" src="https://ibmtechu.com/js/Adata.js"></script>; -->
+     <script type="text/javascript" src="js/my-app.js"></script>;
+    <!-- script type="text/javascript" src="https://ibmtechu.com/js/my-app.js"></script>;  -->
+    <script type="text/javascript" src="js/email.js"></script>; 
+    <script type="text/javascript" src="js/attendee.js"></script>; 
+   <script type="text/javascript">  
+        var res = localStorage.getItem("auth");
+        var tstamp = localStorage.getItem("timestamp");
+        var didiauth = localStorage.getItem("hitauthbtn");
+       
+        if (res == "yes") {
+
+           var event = localStorage.getItem("event");
+           var ename = localStorage.getItem("ename");
+           var fname = localStorage.getItem("fullname");
+           var email = localStorage.getItem("email");
+           var company = localStorage.getItem("company");
+           var ptype = localStorage.getItem("ptype");
+	   document.getElementById("delegate").innerHTML = "<i style=\"font-size:20px\" class=\"f7-icons size-10\">person</i> "+fname+"<br>"+email+"<br>"+ptype+"<br>"+company;
+           var notsnum = localStorage.getItem("msgcnt");
+	   // calc num read
+	    var numread = localStorage.getItem("msgread")
+	    var msgdisp = notsnum - numread
+            if (msgdisp > 0) {
+             document.getElementById("notsid").innerHTML = "<span style='background:red' class='msgnum'>"+msgdisp+"</span>"; }
+	    else {
+             document.getElementById("notsid").innerHTML = "<span class='msgnum'>"+msgdisp+"</span>"; }
+
+	   var overyes = localStorage.getItem("overall");
+           if (overyes == 'done') {
+            document.getElementById("overyeah").innerHTML = "<i style='font-size:20px;' class='f7-icons size-10 color-green'>check</i>" }
+  	   //str = "<i style='font-size:20px;' class='f7-icons size-10 color-green'>refresh_round_fill</i> Refresh Agenda Data &nbsp; <i style='font-size:20px;' class='f7-icons size-10 color-green'>check</i>";
+  	   str = "<i style='font-size:20px;' class='f7-icons size-10 color-blue'>refresh_round_fill</i> Refresh Agenda Data";
+	   $$(prefs).show();
+           $$(theagenda).show();
+           $$(myagenda).show();
+	   $$(indoverall).show();
+	   $$(nots).show();
+ 
+	   wel = "Welcome <font style='color:blue'><b>"+ename+"</b></font><br><font style='font-size:12px;color:blue;'> Sync: "+ tstamp + "</font><br>";
+			document.getElementById("event").innerHTML = wel;
+			document.getElementById("loginsync").href="sync.html"; 
+			//document.getElementById("loginsync").href="login.html"; 
+			document.getElementById("meme").innerHTML = str;
+			document.getElementById("header").innerHTML = "<i style='font-size:18px;' class='f7-icons'>book</i>&nbsp;&nbsp;"+event;
+           // new code for event end check
+             var end = localStorage.getItem("enddate");
+             var d = new Date();
+             var e = new Date(end);
+            // Temporarily disabling date check
+			//if (d >= e) {
+				//wel = "The "+event+" Event has ended. Please proceed to use the web application at https://ibmtechu.com. Thanks,";
+				//myApp.alert(wel,'Note!');
+				//$$(prefs).hide(); $$(theagenda).hide(); $$(myagenda).hide(); $$(indoverall).hide(); $$(nots).hide();
+				//document.getElementById("event").innerHTML = "App cache cleared.";
+				//str = "<i style='font-size:20px' class='f7-icons size-10'>login</i> Login & Sync IBMtechU data</div>"
+				//document.getElementById("meme").innerHTML = str;
+				//localStorage.clear();
+				//}
+           // new code for event end check
+			var nowdindex = new Date();
+			var julianindex = nowdindex.getTime();
+			localStorage.setItem("jd", julianindex); 
+			}
+			else if (res == "no") {
+           str = "<i style='font-size:20px;' class='f7-icons size-10 color-red'>login_fill</i> Authentication failed";
+           document.getElementById("meme").innerHTML = str;
+			}
+			else if ((res == null) && (didiauth != "yes")) {
+			var donothing = "true";
+			}
+			else if ((res == null) && (didiauth == "yes")) {
+			str = "<i style='font-size:20px;' class='f7-icons size-10 color-red'>login_fill</i> Please try again.";
+			document.getElementById("meme").innerHTML = str;
+			}
+    </script>
+	<!-- Upen:Back button logic (Documentation for Alex: http://docs.phonegap.com/en/3.5.0/cordova_events_events.md.html#backbutton) -->
+	<script type="text/javascript" charset="utf-8">
+    // Wait for device API libraries to load
+    function onLoad() {
+        document.addEventListener("deviceready", onDeviceReady, false);
+    }
+    // device APIs are available
+    function onDeviceReady() {
+        // Register the event listener
+        document.addEventListener("backbutton", onBackKeyDown, false);
+		document.addEventListener("menubutton", onMenuKeyDown, false);
+    }
+    // Handle the back button
+    function onBackKeyDown(e) {
+		e.preventDefault();
+		navigator.notification.confirm("Are you sure you want to exit?", onConfirm, "Confirmation", "Yes,No"); 
+		//navigator.app.backHistory();
+		<!-- Upen: logic that should be fixed
+		//if(document.getElementById('#homepage')){
+        //   e.preventDefault();
+           //navigator.app.exitApp();
+		 //  navigator.notification.confirm("Are you sure you want to exit?", onConfirm, "Confirmation", "Yes,No"); 
+       //}
+       //else {
+        //   navigator.app.backHistory();
+       //} end logic-->
+    }
+	function onConfirm(button) {
+    if(button==2){//If the user selected No, then we just do nothing
+        return;
+    }else{
+        navigator.app.exitApp();// Otherwise we quit the app.
+    }
+	}
+	// Handle the menu button
+	 function onMenuKeyDown() {
+    }
+    </script>
+        <!-- Bottom Toolbar Old-->
+        <div id="toolbar" class="toolbar" style="background:#2196f3;color:white">
+          <div class="toolbar-inner">
+             Cloud hosted on IBM Power Systems
+	     <!-- <img style="border:0px;border-style:solid;" src="img/IBM.svg" width="45px"> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

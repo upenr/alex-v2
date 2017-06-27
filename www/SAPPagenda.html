@@ -1,0 +1,63 @@
+
+<!-- We don't need full layout here, because this page will be parsed with Ajax-->
+<!-- Top Navbar-->
+<div class="navbar">
+  <div class="navbar-inner">
+<!--    <div class="left"><a href="index.html" class="back link"> <i style="font-size:25px" class="f7-icons size-10">home_fill</i> </a></div> -->
+    <div class="center sliding">My Agenda</div>
+    <!-- <div class="right">
+       <a href="index.html" class="item-link"> <i style="font-size:20px" class="f7-icons size-10">home_fill</i> </a>
+       <a href="theagenda.html" class="item-link"> <i style="font-size:20px" class="f7-icons size-10">time_fill</i> </a>
+    </div> -->
+  </div>
+</div>
+
+<script type="text/javascript" src="https://ibmtechu.com/js/my-test.js"></script>;
+
+<div class="pages">
+  <!-- Page, data-page contains page name-->
+
+<div data-page="SAPPagenda" class="page">
+
+<div class="balldiv">
+ <a href="#" class="back link">
+ <div class="balloon">
+        <i style="font-size:35px;color:white" class="f7-icons size-10">arrow_left_fill</i>
+ </div>
+</a>
+</div>
+
+  <!-- Search Bar -->
+  <form data-search-list=".list-block-search-APP" data-search-in=".item-title" class="searchbar searchbar-init">
+    <div class="searchbar-input">
+      <input type="search" placeholder="Search"><a href="#" class="searchbar-clear"></a>
+    </div><a href="#" class="searchbar-cancel">Cancel</a>
+  </form>
+
+  <div class="page-content">
+
+    <!-- This block will be displayed if nothing found -->
+    <div style="" class="content-block searchbar-not-found">
+      <div class="content-block-inner">Nothing found</div>
+    </div>
+    <br>
+    <center><div class="buttons-row" style="max-width:98%">
+      <a href="#" id="oneday" class="button active MON">Mon</a>
+      <a href="#" id="twoday" class="button active TUE">Tue</a>
+      <a href="#" id="threeday" class="button active WED">Wed</a>
+      <a href="#" id="fourday" class="button active THU">Thu</a>
+      <a href="#" id="fiveday" class="button active FRI">Fri</a>
+    </div></center>
+
+              <div id="Monday" style="position:relative;top:-15px" class="list-block list-block-search-APP searchbar-found"> </div>
+              <div id="Tuesday" style="position:relative;top:-15px" class="list-block list-block-search-APP searchbar-found"> </div>
+              <div id="Wednesday" style="position:relative;top:-15px" class="list-block list-block-search-APP searchbar-found"> </div>
+              <div id="Thursday" style="position:relative;top:-15px" class="list-block list-block-search-APP searchbar-found"> </div>
+              <div id="Friday" style="position:relative;top:-15px" class="list-block list-block-search-APP searchbar-found"> </div>
+
+  </div>
+</div>
+
+
+</div>
+

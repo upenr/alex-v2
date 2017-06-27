@@ -1,0 +1,187 @@
+.content-block-title {
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 14px;
+  line-height: 1;
+  color: #6d6d72;
+  margin: 10px 15px 10px;
+  text-transform: none;
+  text-align:center;
+}
+
+.black-text {
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 14px;
+  line-height: 1;
+  color: #000000;
+  margin: 10px 15px 10px;
+  text-transform: none;
+  text-align:center;
+}
+
+.aablockT {
+background-color:black;
+text-align:center;color:grey;
+padding: 10px 0px 0px 0px; font-size:15px;
+border-width: 1px; border-style:solid;
+border-color: grey;
+width:100%;
+}
+
+.footerText {
+text-align:center;
+vertical-align: middle;
+}
+
+.balloon {
+display:table;display:table-cell;vertical-align:middle;font-size:14px;font-weight:bold;text-align:center;
+background-color:#007aff;color:white;width:55px;height:55px;border-radius:100%;z-index:10000;
+box-shadow: 0 0 3px gray;
+opacity:0.7;
+}
+
+.balldiv {
+position:fixed;
+width:64px;
+left:80%;bottom:40px;right:0; 
+z-index:5000;
+}
+
+.homeballoon {
+display:table;display:table-cell;vertical-align:middle;font-size:14px;font-weight:bold;text-align:center;
+background-color:#00cc44;color:white;width:55px;height:55px;border-radius:100%;z-index:10000;
+box-shadow: 0 0 3px gray;
+opacity:0.7;
+}
+
+.syncballoon {
+display:table;display:table-cell;vertical-align:middle;font-size:14px;font-weight:bold;text-align:center;
+background-color:#d9d9d9;color:white;width:55px;height:55px;border-radius:100%;z-index:10000;
+box-shadow: 0 0 3px gray;
+}
+
+.homediv {
+position:fixed;
+width:64px;
+left:80%;right:0;bottom:110px;
+z-index:105000;
+}
+
+.homedivbtm {
+position:fixed;
+width:64px;
+left:80%;right:0;bottom:50px;
+z-index:105000;
+}
+
+.prefdiv {
+position:fixed;
+width:64px;
+left:80%;right:0;bottom:180px;
+z-index:105000;
+}
+
+.sponFOOT {
+left:0;bottom:0px;right:0;
+height:120px;background:white;
+position:fixed;z-index:0;width:100%;margin:0px auto;
+font-family: verdana,arial,sans-serif;font-size:12px;
+}
+
+.nots {
+display:inline-block;border-radius:100%; 
+background-color:#007aff;color:white;
+vertical-align:middle;
+text-align:center;
+}
+
+.ball {
+  display: inline-block;
+  text-align:center;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  position: relative;
+  background: #007aff;
+  margin: 0px;
+}
+
+.ballinner {
+  position: absolute;
+top: 50%;
+    -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  font-size:10px;
+}
+
+.ball:before {
+  content: "";
+  position: absolute;
+  top: 1%;
+  left: 5%;
+  width: 90%;
+  height: 90%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 0px, #ffffff, rgba(255, 255, 255, 0) 58%);
+  filter: blur(5px);
+  z-index: 2;
+}
+
+.msgnum {
+    display: inline-block;
+    height: 26px;
+    width: 26px;
+    line-height: 26px;
+    border-radius: 13px;
+    background-color: #007aff;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+}
+
+.syncprog {
+position:fixed;
+width:55px;
+left:0;right:0;bottom:60px;
+margin: 5% auto;
+z-index:105000;
+}
+
+.loader {
+display:inline-block;
+position:fixed;text-align:center;
+width:48px;height:48px;line-height:48px;border-radius:24px;
+left:40%;top:50%;right:0;bottom:0px;
+z-index:105000;opacity:0.8;
+}
+
+.spinner {
+position:fixed;z-index:20;width:100%;height:50px;top:0;bottom:0;left:0;right:0;margin:50px auto;
+}
+
+.myProgress {
+width: 100%;
+background-color: #ddd;
+}
+
+.myBar {
+width: 10%;
+		height: 30px;
+		background-color: #4CAF50;
+		text-align: center; /* To center it horizontally (if you want) */
+		line-height: 30px; /* To center it vertically */
+		color: white;
+}
+
+.button{
+  margin:auto;
+  display:block;
+}
