@@ -13,7 +13,6 @@ animateNavBackIcon: false,
     template7Pages: true,
     // Specify Template7 data for pages | refer to Adata.js
     // template7Data: template7Data,
-	material: true	
 });
 
 // Export selectors engine
