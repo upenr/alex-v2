@@ -174,15 +174,16 @@
              var end = localStorage.getItem("enddate");
              var d = new Date();
              var e = new Date(end);
-             if (d >= e) {
-	       wel = "The "+event+" Event has ended. Please proceed to use the web application at https://ibmtechu.com. Thanks,";
-	       myApp.alert(wel,'Note!');
-               $$(prefs).hide(); $$(theagenda).hide(); $$(myagenda).hide(); $$(indoverall).hide(); $$(nots).hide();
-	       document.getElementById("event").innerHTML = "App cache cleared.";
-  	       str = "<i style='font-size:20px' class='f7-icons size-10'>login</i> Login & Sync IBMtechU data</div>"
-	       document.getElementById("meme").innerHTML = str;
-               localStorage.clear();
-             }
+            // Temporarily disabling date check
+			//if (d >= e) {
+				//wel = "The "+event+" Event has ended. Please proceed to use the web application at https://ibmtechu.com. Thanks,";
+				//myApp.alert(wel,'Note!');
+				//$$(prefs).hide(); $$(theagenda).hide(); $$(myagenda).hide(); $$(indoverall).hide(); $$(nots).hide();
+				//document.getElementById("event").innerHTML = "App cache cleared.";
+				//str = "<i style='font-size:20px' class='f7-icons size-10'>login</i> Login & Sync IBMtechU data</div>"
+				//document.getElementById("meme").innerHTML = str;
+				//localStorage.clear();
+				//}
            // new code for event end check
 			var nowdindex = new Date();
 			var julianindex = nowdindex.getTime();

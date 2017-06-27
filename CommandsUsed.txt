@@ -4,7 +4,7 @@ git commit -m "Initial Commit of Alex-Copy"
    36  git add -A
    37  git status
    38  git commit -m "Initial Commit of Alex-Copy"
-   39  git remote add origin https://github.com/upenr/alex-copy.git
+   39  git remote add origin https://github.com/upenr/alex-v2.git
    40  git remote -v
    41  git push origin master
    42  git pull origin master
@@ -29,3 +29,6 @@ git pull origin master
 and 
 git push origin master
 
+
+
+git remote set-url origin https://github.com/upenr/alex-v2.git
