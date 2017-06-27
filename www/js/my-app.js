@@ -12,7 +12,8 @@ animateNavBackIcon: false,
     // Enabled pages rendering using Template7
     template7Pages: true,
     // Specify Template7 data for pages | refer to Adata.js
-    // template7Data: template7Data, 
+    // template7Data: template7Data,
+	material: true	
 });
 
 // Export selectors engine
@@ -91,14 +92,15 @@ function updateProgress(evt)
    if (evt.lengthComputable) 
    {  // evt.loaded = the bytes the browser received
       // evt.total = the total bytes set by the header
-      // Speak to Alex about content-length header
+      // This section doesn't load currently - Speak to Alex about content-length header
      var percentComplete = (evt.loaded / evt.total) * 100;  
 	 console.log("percent " + percentage + '%' );
      //$('#progressbar').progressbar( "option", "value", percentComplete ); 
-	 alert("Length computable."); //Can we get here?
+	 alert("Length computable.");
    } 
    else{
-	   //alert("Length not computable."); Currently, we are always here.
+	   //alert("Length not computable."); Currently, we are always here.	   
+	   $$(newProgressBar).hide();
 	   move();
    }
 }   

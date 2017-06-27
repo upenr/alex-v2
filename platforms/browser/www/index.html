@@ -200,6 +200,44 @@
 			document.getElementById("meme").innerHTML = str;
 			}
     </script>
+	<!-- Upen:Back button logic (Documentation for Alex: http://docs.phonegap.com/en/3.5.0/cordova_events_events.md.html#backbutton) -->
+	<script type="text/javascript" charset="utf-8">
+    // Wait for device API libraries to load
+    function onLoad() {
+        document.addEventListener("deviceready", onDeviceReady, false);
+    }
+    // device APIs are available
+    function onDeviceReady() {
+        // Register the event listener
+        document.addEventListener("backbutton", onBackKeyDown, false);
+		document.addEventListener("menubutton", onMenuKeyDown, false);
+    }
+    // Handle the back button
+    function onBackKeyDown(e) {
+		e.preventDefault();
+		navigator.notification.confirm("Are you sure you want to exit?", onConfirm, "Confirmation", "Yes,No"); 
+		//navigator.app.backHistory();
+		<!-- Upen: logic that should be fixed
+		//if(document.getElementById('#homepage')){
+        //   e.preventDefault();
+           //navigator.app.exitApp();
+		 //  navigator.notification.confirm("Are you sure you want to exit?", onConfirm, "Confirmation", "Yes,No"); 
+       //}
+       //else {
+        //   navigator.app.backHistory();
+       //} end logic-->
+    }
+	function onConfirm(button) {
+    if(button==2){//If the user selected No, then we just do nothing
+        return;
+    }else{
+        navigator.app.exitApp();// Otherwise we quit the app.
+    }
+	}
+	// Handle the menu button
+	 function onMenuKeyDown() {
+    }
+    </script>
         <!-- Bottom Toolbar Old-->
         <div id="toolbar" class="toolbar" style="background:#2196f3;color:white">
           <div class="toolbar-inner">
