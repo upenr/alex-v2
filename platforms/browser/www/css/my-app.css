@@ -185,3 +185,11 @@ width: 10%;
   margin:auto;
   display:block;
 }
+
+.progressbar {
+  height: 6px;
+  border-radius: 3px;
+  width: 0%;
+  border-color: green;
+  background-color: green;
+}
