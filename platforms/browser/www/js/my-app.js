@@ -89,23 +89,6 @@ function LOGIN(email, passwd) {
         return xhr;
     }
 
-    //upen
-    function updateProgress(evt) {
-        if (evt.lengthComputable) { // evt.loaded = the bytes the browser received
-            // evt.total = the total bytes set by the header
-            // This section doesn't load currently - Speak to Alex about content-length header
-            var percentComplete = (evt.loaded / evt.total) * 100;
-            console.log("percent " + percentComplete + '%');
-            //$('#progressbar').progressbar( "option", "value", percentComplete ); 
-            alert("Length computable.");
-            move();
-        } else {
-            //alert("Length not computable."); Currently, we are always here.	   
-            $$(newProgressBar).show();
-            move();
-        }
-    }
-
     // Helper method to parse the title tag from the response.
     function getTitle(text) {
         return text.match('<title>(.*)?</title>')[1];
@@ -115,71 +98,93 @@ function LOGIN(email, passwd) {
     	(function(d){
               var ref = d.getElementsByTagName('script')[0];
               var js = d.createElement('script');
+			  js.defer=true;
               js.src = poo;
               ref.parentNode.insertBefore(js, ref); 
               }(document));
     } */
+	
+	let TOTAL_ESTIMATE = 583 * 1024;
+// The same bar I was using in login and sync files
+let bar = document.getElementById("myBar");
+//let button = document.getElementById("dlbtn");
 
-    function processJS(src) {
-        return new Promise((resolve, reject) => {
-            const script = document.createElement('script');
-            script.async = true;
-            script.src = src;
-            script.addEventListener('load', resolve);
-            script.addEventListener('error', () => reject('Error loading script.'));
-            script.addEventListener('abort', () => reject('Script loading aborted.'));
-            document.head.appendChild(script);
-        });
-    }
+var js; // to hold the created dom element
+var fileName; // to hold my cached script adresss
 
-    // Make the actual CORS request.
-    function makeCorsRequestTWO(email, passwd) {
-        var url = 'https://ibmtechu.com/cgi-bin/app/applogin.cgi?id=' + email + '&passwd=' + passwd;
-        var xhr = createCORSRequestTWO('GET', url);
-        if (!xhr) {
-            alert('CORS not supported');
-            return;
-        }
-        // Response handlers.
-        xhr.onload = function() {
-            var text = xhr.responseText;
-            var title = getTitle(text);
-            if (title == 'PASS') {
-                var file = "https://ibmtechu.com/js/DATAFILES/my-index-" + email + ".js";
-                processJS(file);
-                //downloadFile(file);
-                //myApp.alert('Passed! Processing Agenda','login'); 
-                //localStorage.setItem("auth", "yes"); //upen added - is this correct?
-                document.getElementById("syncmsg").style.visibility = "visible";
+/* this function will be called several times during (the first) download, with info about how much data is loaded */
+
+function onProgress(e) {
+  var percentComplete = e.loaded / TOTAL_ESTIMATE;
+  if (e.lengthComputable) {
+	//alert("Length computable.");
+    percentComplete = e.loaded / e.total;
+  }
+  p = Math.round(percentComplete * 100);
+  console.log("progress", p + "%,", e.loaded, "bytes loaded")
+  bar.style = "width: " + (1 * p) + "%"; 
+  document.getElementById("myBar").innerHTML = p + "%"; 
+}
+
+/* this function is called when info comes. at the end of the initial download, the readystate will be 4 so we then set the file's src attribute, triggering a re-download but taking advantage of the browser's cache. It's not ideal, and simply `eval` ing the data would probably yield better results. I just assumed you wanted a <script> tag on your page, and for it to be evaluated. */ 
+function onReadyState(e) {
+  let r = e.target;
+  //this is lifted from http://vanilla-js.com/ ;)
+  if (r.readyState != 4 || r.status != 200)
+    return;
+  let l = r.responseText.length;
+  console.log("Success !", l, "bytes total (" + Math.round(l / 1024) + " KB )");
+  //bar.style = "width: 70%";
+  //bar.innerHTML = 70 * 1 + '%';
+  //just add / to next line to toggle ending methods
+  /* you could speed up the proces by simply eval()ing the returned js. like so (please be aware of security concerns) :
+  eval.bind(window)(r.responseText);
+  onScriptLoaded();
+  /*/
+
+  js.src = fileName;
+  //bar.style = "width: 80%";
+  //bar.innerHTML = 80 * 1 + '%';
+  var ref = document.getElementsByTagName('script')[0];
+  ref.parentNode.insertBefore(js, ref);
+  //*/
+  
+};
+
+//this is called when the script has been evaluated :
+function onScriptLoaded() {
+  document.getElementById("syncmsg").style.visibility = "visible";
                 setTimeout(function() {
                     document.getElementById("loginform").submit();
                 }, 1000);
-            } else {
-                document.getElementById("failedmsg").style.visibility = "visible";
-                document.getElementById("failedmsg").innerHTML = "Authentication Failed!";
-                var file = "https://ibmtechu.com/js/DATAFILES/my-index-" + email + ".js";
-                processJS(file);
-                setTimeout(function() {
-                    document.getElementById("loginform").submit();
-                }, 1000);
-            }
-        };
+  //button.disabled = false;
+  console.log("script has been RUN - checking for variable featuredsessionslist in your JS file?", featuredsessionslist ? "yes, loaded." : "no"); 
+}
 
-        xhr.onerror = function() {
-            myApp.alert('Please connect to the Internet and try again.', 'Error');
-            $$(thinking).hide();
-            $$(credsbtn).show();
-            $$(backhide).show();
-        };
-        xhr.addEventListener("progress", updateProgress); //upen
-
-        xhr.send();
-
-    }
-    makeCorsRequestTWO(email, passwd);
-} //end LOGIN
-
-//Upen: This function moves the progress in the bar
+//equivalent of our processJS method
+function downloadFile(file) {
+  //button.disabled = true;
+  (function(d) {
+    // this helps to test this script multiple times. Should remove for final version
+    fileName = file + "?bustCache=" + new Date().getTime();
+	
+	console.log("Just showing console log output below.");
+    console.log("Starting download");
+    js = d.createElement('script');
+    js.type = "text/javascript";
+    js.defer = "defer";
+    js.async = "async";
+    var r = new XMLHttpRequest();
+    bar.style = "width: 5%"; //always react ASAP
+    r.addEventListener("progress", onProgress);
+    r.open("GET", fileName, true);
+    r.onreadystatechange = onReadyState;
+    js.onload = onScriptLoaded;
+    r.send();
+    
+  }(document));
+}
+//Upen: This function moves the progress in the bar from 10 to 100%
 function move() {
     var elem = document.getElementById("myBar");
     var width = 10;
@@ -195,6 +200,47 @@ function move() {
         }
     }
 }
+    // Make the actual CORS request.
+    function makeCorsRequestTWO(email, passwd) {
+        var url = 'https://ibmtechu.com/cgi-bin/app/applogin.cgi?id=' + email + '&passwd=' + passwd;
+        var xhr = createCORSRequestTWO('GET', url);
+        if (!xhr) {
+            alert('CORS not supported');
+            return;
+        }
+        // Response handlers.
+        xhr.onload = function() {
+            var text = xhr.responseText;
+            var title = getTitle(text);
+            if (title == 'PASS') {
+                var file = "https://ibmtechu.com/js/DATAFILES/my-index-" + email + ".js";
+                //processJS(file);
+                downloadFile(file,this);
+                //myApp.alert('Passed! Processing Agenda','login'); 
+                //localStorage.setItem("auth", "yes"); //upen added - is this correct?
+
+            } else {
+                document.getElementById("failedmsg").style.visibility = "visible";
+                document.getElementById("failedmsg").innerHTML = "Authentication Failed!";
+                var file = "https://ibmtechu.com/js/DATAFILES/my-index-" + email + ".js";
+                //processJS(file);
+				downloadFile(file,this);
+                setTimeout(function() {
+                    document.getElementById("loginform").submit();
+                }, 1000);
+            }
+        };
+
+        xhr.onerror = function() {
+            myApp.alert('Please connect to the Internet and try again.', 'Error');
+            $$(thinking).hide();
+            $$(credsbtn).show();
+            $$(backhide).show();
+        };
+        xhr.send();
+    }
+    makeCorsRequestTWO(email, passwd);
+} //end LOGIN
 
 function TECHUsurvey(session, who, sessR, speakR, comments) {
     // Create the XHR object.
