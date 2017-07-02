@@ -1,10 +1,12 @@
-#Testing edit from new laptop. Worked. 
-#Upen: Progress bar and back button fixes here. 
-#Added a second indeterminate progress bar (hidden by default - can be enabled by changing $$(newProgressBar).hide(); to $$(newProgressBar).show();)
+1) #Upen: Code cleaned, ProgressBar working, Hardware Back button ALWAYS brings user to the home page.
 
+2) #Upen: Progress bar and back button fixes here. 
+
+3) #Added a second indeterminate progress bar (Enabled by default - can be hidden by changing $$(newProgressBar).show(); to $$(newProgressBar).hide();)
+
+=======
 These are files in the PhoneGap project directory.
 To install PhoneGap, visit: phonegap.com.
-=======
 # Framework7 PhoneGap Application 
 
 > [Framework7](http://www.idangero.us/framework7) is a Mobile UI framework that can be used to build hybrid apps with PhoneGap. This template allows you to get started using Framework7 

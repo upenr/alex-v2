@@ -173,7 +173,7 @@ background-color: #ddd;
 }
 
 .myBar {
-width: 10%;
+width: 5%;
 		height: 30px;
 		background-color: #4CAF50;
 		text-align: center; /* To center it horizontally (if you want) */
@@ -184,12 +184,4 @@ width: 10%;
 .button{
   margin:auto;
   display:block;
-}
-
-.progressbar {
-  height: 6px;
-  border-radius: 3px;
-  width: 0%;
-  border-color: green;
-  background-color: green;
 }

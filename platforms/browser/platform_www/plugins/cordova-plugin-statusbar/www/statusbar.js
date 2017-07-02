@@ -1,4 +1,6 @@
-cordova.define("cordova-plugin-statusbar.statusbar", function(require, exports, module) { /*
+cordova.define("cordova-plugin-statusbar.statusbar", function(require, exports, module) { 
+	/*
+}
  *
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -11,4 +13,5 @@ cordova.define("cordova-plugin-statusbar.statusbar", function(require, exports, 
  *   http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicab
+ */
 });

@@ -16,7 +16,7 @@
     <!-- <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script> -->
 </head>
 
-<body onload="onLoad()">
+<body id='homepage' onload="onLoad()">
     <!-- Status bar overlay for fullscreen mode-->
     <div class="statusbar-overlay"></div>
     <!-- Panels overlay-->
@@ -150,8 +150,8 @@
             </div>
             <!-- Path to Framework7 Library JS-->
             <script type="text/javascript" src="js/framework7.min.js"></script>
-            <!-- <script type="text/javascript" charset="utf-8" src="cordova.js"></script> -->
-            <!-- upen - cordova.js is auto-available before publish and needed to handle back button -->
+            <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+            <!-- upen: cordova.js is auto-available before publish and needed to handle back button -->
             <!-- Path to your app js-->
             <!-- <script type="text/javascript" src="https://ibmtechu.com/js/Adata.js"></script>; -->
             <script type="text/javascript" src="js/my-app.js"></script>;
@@ -195,7 +195,6 @@
                     wel = "Welcome <font style='color:blue'><b>" + ename + "</b></font><br><font style='font-size:12px;color:blue;'> Sync: " + tstamp + "</font><br>";
                     document.getElementById("event").innerHTML = wel;
                     document.getElementById("loginsync").href = "sync.html";
-                    //document.getElementById("loginsync").href="login.html"; 
                     document.getElementById("meme").innerHTML = str;
                     document.getElementById("header").innerHTML = "<i style='font-size:18px;' class='f7-icons'>book</i>&nbsp;&nbsp;" + event;
                     // new code for event end check
@@ -230,9 +229,31 @@
             <script type="text/javascript" charset="utf-8">
                 // Wait for device API libraries to load
                 function onLoad() {
+                	function get_lastPage() // to get last called ajax url
+                	{
+                		var url = "";
+                		try {
+                			var ajax_pages = localStorage.getItem('ajax_pages').split();
+                			url = ajax_pages.pop();
+                			localStorage.setItem('ajax_pages', ajax_pages.toString());
+                		} catch (err) {
+                		}
+                		return url;
+                	}
+
+                	function set_newPage(url) // to set new ajax url (call in ajax success)
+                	{
+                		try {
+                			var ajax_pages = localStorage.getItem('ajax_pages').split();
+                			ajax_pages.push(url);
+                			localStorage.setItem('ajax_pages', ajax_pages.toString());
+
+                		} catch (err) {
+                		}
+                	}
+                	
                     document.addEventListener("deviceready", onDeviceReady, false);
-                }
-                // device APIs are available
+					                // device APIs are available
                 function onDeviceReady() {
                     // Register the event listener
                     document.addEventListener("backbutton", onBackKeyDown, false);
@@ -240,18 +261,9 @@
                 }
                 // Handle the back button
                 function onBackKeyDown(e) {
-                    e.preventDefault();
-                    navigator.notification.confirm("Are you sure you want to exit?", onConfirm, "Confirmation", "Yes,No");
-                    //navigator.app.backHistory();
-                    <!-- Upen: logic that should be fixed
-                    //if(document.getElementById('#homepage')){
-                    //   e.preventDefault();
-                    //navigator.app.exitApp();
-                    //  navigator.notification.confirm("Are you sure you want to exit?", onConfirm, "Confirmation", "Yes,No"); 
-                    //}
-                    //else {
-                    //   navigator.app.backHistory();
-                    //} end logic-->
+						e.preventDefault();
+						//navigator.notification.confirm("Are you sure you want to exit?", onConfirm, "Confirmation", "Yes,No");
+						window.location.href = get_lastPage();
                 }
 
                 function onConfirm(button) {
@@ -263,6 +275,7 @@
                 }
                 // Handle the menu button
                 function onMenuKeyDown() {}
+                }
             </script>
             <!-- Bottom Toolbar Old-->
             <div id="toolbar" class="toolbar" style="background:#2196f3;color:white">

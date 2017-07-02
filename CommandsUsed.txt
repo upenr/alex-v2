@@ -29,6 +29,4 @@ git pull origin master
 and 
 git push origin master
 
-
-
 git remote set-url origin https://github.com/upenr/alex-v2.git

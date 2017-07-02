@@ -25,7 +25,7 @@
             <!-- 3 -->
             <form id="loginform" class="list-block store-data" action="index.html">
 
-                <div class="black-text" style="top:-10px">Enter IBMtechU Email & Password below.<br><br>
+                <div class="black-text" style="top:-10px">Enter IBMTechU Email & Password below.<br><br>
                     <font style="font-size:14px">For password reset, visit www.ibmtechu.com.</font> <br> <br>
                     <font style="font-size:14px">*Internet connection is required.</font>
 
@@ -66,22 +66,19 @@
                         </div>
                         <div id="thinking" style="width:100%;text-align:center">
                             <div class="col-100">
-                                <font style="font-size:12px;color:black">Connecting ...<br> </font>
+                                <font style="font-size:12px;color:black">Connecting...<br> </font>
                                 <!-- <span class="preloader"></span> -->
                             </div>
 
-                            <div class="col-100">
-                                <center>
+                            <div style="text-align:center" class="col-100">
                                     <font id="syncmsg" style="color:#4caf50;font-size:12px">Success!<br>Sync'ing Agenda Data. Please wait.</font>
-                                </center>
+                            </div>
+                            <div style="text-align:center" class="col-100">
+                                <div id="failedmsg" style='display:block;padding:12px;width:90%;background:white;color:red;font-size:10px;'></div>
                             </div>
 
-                            <center>
-                                <div id="failedmsg" style='display:block;padding:12px;width:90%;background:white;color:red;font-size:10px;'></div>
-                            </center>
-
                             <div id="myProgress" class="myProgress">
-                                <div id="myBar" class="myBar">10%</div>
+                                <div id="myBar" class="myBar">5%</div>
                             </div>
                             <div id="newProgressBar">
                                 <div class="content-block-title"></div>
