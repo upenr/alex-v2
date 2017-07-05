@@ -1,4 +1,4 @@
-1) #Upen: Code cleaned, ProgressBar working, Hardware Back button ALWAYS brings user to the home page.
+1) #Upen: Back button fully fixed. Progress Bar fully fixed. About page layout changed.
 
 2) #Upen: Progress bar and back button fixes here. 
 
