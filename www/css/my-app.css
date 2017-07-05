@@ -173,7 +173,7 @@ background-color: #ddd;
 }
 
 .myBar {
-width: 5%;
+width: 1%;
 		height: 30px;
 		background-color: #4CAF50;
 		text-align: center; /* To center it horizontally (if you want) */
@@ -184,4 +184,12 @@ width: 5%;
 .button{
   margin:auto;
   display:block;
+}
+
+.panel {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
 }
