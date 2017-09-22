@@ -86,7 +86,7 @@
                                     <a id="loginsync" href="login.html" class="item-link">
                                         <div class="item-content">
                                             <div class="item-inner">
-                                                <div class="item-title" id="meme"><i style="font-size:20px" class="f7-icons size-10">login</i> Login & Sync IBMtechU data</div>
+                                                <div class="item-title" id="meme"><i style="font-size:20px" class="f7-icons size-10">login</i> Login & Sync IBMTechU data</div>
                                             </div>
                                         </div>
                                     </a>
@@ -141,9 +141,17 @@
                                         </div>
                                     </a>
                                 </li>
+								 <li>
+                                    <a id="ttsync" href="tt.html" class="item-link">
+                                        <div class="item-content">
+                                            <div class="item-inner">
+                                                <div class="item-title" id="ttmeme"><i style="font-size:20px" class="f7-icons size-10">check_round_fill</i> IBM Tech. Training Info</div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
                             </ul>
                         </div>
-
                         <!-- <div class="sponFOOT">SPONSOR</div> -->
                     </div>
                 </div>
@@ -192,6 +200,7 @@
                     $$(myagenda).show();
                     $$(indoverall).show();
                     $$(nots).show();
+					$$(ttsync).show();
 
                     wel = "Welcome <font style='color:blue'><b>" + ename + "</b></font><br><font style='font-size:12px;color:blue;'> Sync: " + tstamp + "</font><br>";
                     document.getElementById("event").innerHTML = wel;
@@ -208,7 +217,7 @@
                     myApp.alert(wel,'Note!');
                     $$(prefs).hide(); $$(theagenda).hide(); $$(myagenda).hide(); $$(indoverall).hide(); $$(nots).hide();
                     document.getElementById("event").innerHTML = "App cache cleared.";
-                    str = "<i style='font-size:20px' class='f7-icons size-10'>login</i> Login & Sync IBMtechU data</div>"
+                    str = "<i style='font-size:20px' class='f7-icons size-10'>login</i> Login & Sync IBMTechU data</div>"
                     document.getElementById("meme").innerHTML = str;
                     localStorage.clear();
                     } */
@@ -230,7 +239,6 @@
             <script type="text/javascript" charset="utf-8">
                 // Wait for device API libraries to load
                 function onLoad() {
-                   
                     document.addEventListener("deviceready", onDeviceReady, false);
                     // device APIs are available
                     function onDeviceReady() {
