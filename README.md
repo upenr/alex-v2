@@ -4,7 +4,7 @@
 
 3) #Added a second indeterminate progress bar (Enabled by default - can be hidden by changing $$(newProgressBar).show(); to $$(newProgressBar).hide();)
 
-4) #Migrated to new laptop: Sep11, 2017
+4) #Migrated to new laptop: Sep 22, 2017
 
 =======
 These are files in the PhoneGap project directory.
