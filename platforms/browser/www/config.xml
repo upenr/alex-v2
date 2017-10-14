@@ -11,6 +11,8 @@
     <access origin="*" />
     <allow-intent href="http://*/*" launch-external="yes" />
     <allow-intent href="https://*/*" launch-external="yes" />
+    <allow-intent href="*://*.twitter.com/*" />
+    <allow-navigation href="*://*.twitter.com/*" />
     <allow-intent href="tel:*" />
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
