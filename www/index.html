@@ -7,7 +7,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="snow">
     <title>My App</title>
-    <!-- Path to Framework7 Library CSS-->
+    <!-- Path to Framework7 Library CSS for iOS-->
     <link rel="stylesheet" href="css/framework7.ios.min.css">
     <link rel="stylesheet" href="css/framework7.ios.colors.min.css">
     <link rel="stylesheet" href="css/framework7-icons.css">
@@ -124,7 +124,7 @@
                                         <div class="item-content">
                                             <div class="item-inner">
                                                 <div class="item-title"> <i style="font-size:20px;color:#007aff" class="f7-icons size-10">chat_fill</i> Notifications
-                                                    <font style="display:inline-block;border:0px;border-style:solid;padding:2px;min-width:22px;text-align:center;border-radius:6px;background::white" id="notsid"></font>
+												<font style="display:inline-block;border:0px;border-style:solid;padding:2px;min-width:22px;text-align:center;border-radius:6px;background::white" id="notsid"></font>
                                                 </div>
                                             </div>
                                         </div>
@@ -169,7 +169,6 @@
             <script type="text/javascript" src="js/email.js"></script>;
             <script type="text/javascript" src="js/attendee.js"></script>;
             <script type="text/javascript">
-                //console.log(mainView.activePage.name);
                 var res = localStorage.getItem("auth");
                 var tstamp = localStorage.getItem("timestamp");
                 var didiauth = localStorage.getItem("hitauthbtn");
@@ -239,38 +238,37 @@
             </script>
             <!-- Upen:Back button logic (Documentation for Alex: http://docs.phonegap.com/en/3.5.0/cordova_events_events.md.html#backbutton) -->
             <script type="text/javascript" charset="utf-8">
-                // Wait for device API libraries to load
-                function onLoad() {
-                    document.addEventListener("deviceready", onDeviceReady, false);
-                    // device APIs are available
-                    function onDeviceReady() {
-                        // Register the event listener
-                        document.addEventListener("backbutton", onBackKeyDown, false);
-                        document.addEventListener("menubutton", onMenuKeyDown, false);
-                    }
-                    // Handle the back button - Upen: Works perfectly
-                    function onBackKeyDown(e) {
-                        if (mainView.activePage.name == 'index') {
-                            e.preventDefault();
-                            navigator.notification.confirm("Are you sure you want to exit?", onConfirm, "Confirmation", "Yes,No");
-                        } else {
-                            mainView.router.back({
-                                ignoreCache: true
-                            });
-                        }
-                    }
-
-                    function onConfirm(button) {
-                        if (button == 2) { //If the user selected No, then we just do nothing
-                            return;
-                        } else {
-                            navigator.app.exitApp(); // Otherwise we quit the app.
-                        }
-                    }
-                    // Handle the menu button
-                    function onMenuKeyDown() {}
-                }
-            </script>
+					// BACK BUTTTON
+					// Wait for device API libraries to load
+					function onLoad() {
+						document.addEventListener("deviceready", onDeviceReady, false);
+					}
+					// device APIs are available
+					function onDeviceReady() {
+						// Register the event listener
+						document.addEventListener("backbutton", onBackKeyDown, false);
+					}
+					// Handle the back button
+					function onBackKeyDown(e) {
+						if (mainView.activePage.name == 'index') {
+						   e.preventDefault();
+					myApp.confirm('Are you sure?', 'App Exit!',
+					  function () {
+						//myApp.alert('You clicked Ok button');
+						navigator.app.exitApp();
+					  },
+					  function () {
+						//myApp.alert('You clicked Cancel button');
+						return;
+					  }
+					);
+						} else {
+						   mainView.router.back({
+						   ignoreCache: true
+							  });
+						   }
+						}
+			</script>
             <!-- Bottom Toolbar Old-->
             <div id="toolbar" class="toolbar" style="background:#2196f3;color:white">
                 <div class="toolbar-inner">
